@@ -3,5 +3,5 @@ main: com.exitium.capturethecarrot.Main
 version: 1.0
 description: CaptureTheCarrot plugin
 commands:
-    ctc:
-        description: CaptureTheCarrot commands
+  ctc:
+    description: CaptureTheCarrot commands
