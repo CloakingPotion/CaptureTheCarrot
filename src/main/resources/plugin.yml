@@ -2,6 +2,7 @@ name: CaptureTheCarrot
 main: com.exitium.capturethecarrot.Main
 version: 1.0
 description: CaptureTheCarrot plugin
+api-version: 1.18
 commands:
   ctc:
     description: CaptureTheCarrot commands

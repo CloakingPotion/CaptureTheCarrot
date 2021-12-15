@@ -5,12 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cloakingocean</groupId>
-    <artifactId>CaptureTheCarrot</artifactId>
+    <artifactId>capture-the-carrot</artifactId>
     <version>2.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
 
     <build>
@@ -20,7 +22,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <outputDirectory>${project.basedir}/test-server/plugins/${project.build.finalName}</outputDirectory>
+                    <outputDirectory>${project.basedir}/test-server/plugins/</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

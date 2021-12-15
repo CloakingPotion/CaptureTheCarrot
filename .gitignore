@@ -2,27 +2,8 @@
 /.project
 /bin/
 
-Skip to content
-HexagonMC
-/
-Spigot-Annotations
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-More
-Spigot-Annotations/.gitignore
-@Zartec
-Zartec Updated dependencies, code cleanup and finally implemented command an…
-…
- History
- 1 contributor
-257 lines (189 sloc)  4.36 KB
-
-# Created by https://www.gitignore.io/api/git,java,kate,linux,gradle,windows,eclipse,intellij+all
+/test-server/*
+/target
 
 ### Eclipse ###
 
