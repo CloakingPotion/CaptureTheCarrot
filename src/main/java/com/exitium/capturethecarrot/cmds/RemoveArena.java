@@ -8,7 +8,7 @@ import com.exitium.capturethecarrot.CommandInfo;
 import com.exitium.capturethecarrot.GameCommand;
 import com.exitium.capturethecarrot.SettingsManager;
 
-@CommandInfo(description = "Remove an arena.", usage = "<name>", aliases = { "removearena", "ra"})
+@CommandInfo(aliases = { "removearena", "ra"}, usage = "<name>", description = "Remove an arena.")
 public class RemoveArena extends GameCommand{
 	
 	public void onCommand(Player p, String[] args) {

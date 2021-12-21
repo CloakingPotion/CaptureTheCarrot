@@ -4,19 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.exitium.capturethecarrot.cmds.*;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import com.exitium.capturethecarrot.cmds.AddLobbySign;
-import com.exitium.capturethecarrot.cmds.AddSpawn;
-import com.exitium.capturethecarrot.cmds.CreateArena;
-import com.exitium.capturethecarrot.cmds.Join;
-import com.exitium.capturethecarrot.cmds.Leave;
-import com.exitium.capturethecarrot.cmds.RemoveArena;
 
 public class CommandManager implements CommandExecutor{
 
@@ -25,6 +19,7 @@ public class CommandManager implements CommandExecutor{
 	protected CommandManager() {
 //		cmds = new ArrayList<>();
 		cmds.add(new Join());
+		cmds.add(new ListArenas());
 		cmds.add(new Leave());
 		cmds.add(new CreateArena());
 		cmds.add(new RemoveArena());
@@ -45,37 +40,48 @@ public class CommandManager implements CommandExecutor{
 			if(args.length == 0) {
 				for(GameCommand gcmd : cmds) {
 					CommandInfo info = gcmd.getClass().getAnnotation(CommandInfo.class);
-					p.sendMessage(ChatColor.GOLD + "/ctc (" + StringUtils.join(info.aliases(), " ").trim() + ") " + info.usage() + " - " + info.description());
+					String toSend = ChatColor.GOLD + "/ctc (" + StringUtils.join(info.aliases(), " ").trim() + ")";
+
+					if (info.usage().equals("")) {
+						toSend += " - " + info.description();
+					} else {
+						toSend += " " + info.usage() + " - " + info.description();
+					}
+
+					p.sendMessage(toSend);
 				}
 				
 				return true;
 			}
-			
-			GameCommand wanted = null;
-			
-			for(GameCommand gcmd : cmds) {
-				CommandInfo info = gcmd.getClass().getAnnotation(CommandInfo.class);
-				for (String alias : info.aliases()) {
-					if (alias.equals(args[0])) {
-						wanted = gcmd;
-						break;
-					}
-				}
-			}
+
+			GameCommand wanted = getGameCommand(args[0]);
 			
 			if (wanted == null) {
 				p.sendMessage(ChatColor.DARK_RED + "Could not find command,");
 				return true;
 			}
+
+			String[] newArgs = args;
+			if (newArgs.length >= 1)
+				newArgs = Arrays.copyOfRange(args, 1, args.length);
 			
-			List<String> newArgs = Arrays.asList(args);
-			if (newArgs.size() == 1)
-				newArgs.removeAll(Arrays.asList(newArgs.get(0)));
-			args = newArgs.toArray(new String[newArgs.size()]);
-			
-			wanted.onCommand(p, args);
+			wanted.onCommand(p, newArgs);
 		}
 		return false;
 		
+	}
+
+	private GameCommand getGameCommand(String command) {
+		GameCommand wanted = null;
+
+		for(GameCommand gcmd : cmds) {
+			CommandInfo info = gcmd.getClass().getAnnotation(CommandInfo.class);
+			for (String alias : info.aliases()) {
+				if (alias.equalsIgnoreCase(command)) {
+					return gcmd;
+				}
+			}
+		}
+		return null;
 	}
 }

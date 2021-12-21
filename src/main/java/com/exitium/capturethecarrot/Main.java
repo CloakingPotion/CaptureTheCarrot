@@ -14,7 +14,7 @@ public class Main extends JavaPlugin{
 	
 	@Override
 	public void onEnable() {
-		ArenaManager.getInstance().setup();
+		ArenaManager.getInstance().setup(); // Does nothing if no arenas are loaded
 		
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		

@@ -8,7 +8,7 @@ import com.exitium.capturethecarrot.ArenaManager;
 import com.exitium.capturethecarrot.CommandInfo;
 import com.exitium.capturethecarrot.GameCommand;
 
-@CommandInfo(description =  "Join a game", usage = "<arenaName>", aliases = {"join", "j"})
+@CommandInfo(aliases = {"join", "j"}, usage = "<arenaName>", description =  "Join a game")
 public class Join extends GameCommand{
 
 	public void onCommand(Player p, String[] args) {

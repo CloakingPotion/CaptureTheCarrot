@@ -8,7 +8,7 @@ import com.exitium.capturethecarrot.CommandInfo;
 import com.exitium.capturethecarrot.GameCommand;
 import com.exitium.capturethecarrot.SettingsManager;
 
-@CommandInfo(description = "Create an arena.", usage = "<name>", aliases = { "createarena", "ca"})
+@CommandInfo(aliases = { "createarena", "ca"}, usage = "<name>", description = "Create an arena.")
 public class CreateArena extends GameCommand{
 	
 	public void onCommand(Player p, String[] args) {

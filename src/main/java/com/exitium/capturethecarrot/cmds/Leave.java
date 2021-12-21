@@ -8,7 +8,7 @@ import com.exitium.capturethecarrot.ArenaManager;
 import com.exitium.capturethecarrot.CommandInfo;
 import com.exitium.capturethecarrot.GameCommand;
 
-@CommandInfo(description =  "Leave a game", usage = "", aliases = {"leave", "l"})
+@CommandInfo(aliases = {"leave", "l"}, usage = "", description = "Leave a game")
 public class Leave extends GameCommand{
 
 	public void onCommand(Player p, String[] args) {
