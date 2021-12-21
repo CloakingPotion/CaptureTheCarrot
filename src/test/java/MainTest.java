@@ -2,6 +2,7 @@ import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
 import com.exitium.capturethecarrot.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,6 +42,18 @@ public class MainTest {
       logger.info("Player " + i + " running join command...");
       server.getPlayer(i).performCommand(joinCommand);
       logger.info("Player " + i + " join command complete");
+    }
+
+    logLocations();
+  }
+
+  private void logLocations() {
+    for (int i = 0; i < 20; i++) {
+
+      Location playerLocation = server.getPlayer(i).getLocation();
+
+      Bukkit.getLogger().info("Player " + i + " location:");
+      Bukkit.getLogger().info(" - " + playerLocation);
     }
   }
 }
